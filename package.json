@@ -1,8 +1,9 @@
 {
 	"name": "test-purpose-package",
 	"scripts": {
-		"helloworld": "node -e \"console.log(require('./helloworld').handler({}));\"",
-    "getAllTranslations": "node -e \"console.log(require('./getAllTranslations').handler({}));\""
+		"helloworld": "node -e \"console.log(require('./helloworld/index').handler({}));\"",
+    "getAllTranslations": "node -e \"console.log(require('./getAllTranslations/index').handler({}));\"",
+    "lastLambda": "node -e \"console.log(require('./lastLambda/index').handler({}));\""
 	},
   "execute_command": {
     "command": "npm run helloworld"
