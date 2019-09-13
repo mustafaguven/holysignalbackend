@@ -1,0 +1,13 @@
+{
+	"name": "test-purpose-package",
+	"scripts": {
+		"helloworld": "node -e \"console.log(require('./helloworld').handler({}));\"",
+    "getAllTranslations": "node -e \"console.log(require('./getAllTranslations').handler({}));\""
+	},
+  "execute_command": {
+    "command": "npm run helloworld"
+  },
+	"devDependencies": {
+		"eslint": "^4.19.0"
+	}
+}
