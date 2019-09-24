@@ -1,0 +1,6 @@
+{
+  "dbhost": "holysignaldbinstance.ctvzo679bkpz.eu-west-1.rds.amazonaws.com",
+  "dbname": "holysignaldb",
+  "dbuser": "admin",
+  "dbpassword": "holyadmin123456"
+}

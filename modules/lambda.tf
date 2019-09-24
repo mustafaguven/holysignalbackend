@@ -5,8 +5,9 @@ locals {
 
 data "archive_file" "zipping_lambda" {
   type        = "zip"
-  source_file = "${var.zip_source_file}"
+  #source_file = "${var.zip_source_file}"
   output_path = "${local.lambda_zip_location}"
+  source_dir  = "${var.zip_source_dir}"
 }
 
 resource "aws_lambda_function" "lambda" {

@@ -2,13 +2,16 @@
 	"name": "test-purpose-package",
 	"scripts": {
 		"helloworld": "node -e \"console.log(require('./helloworld/index').handler({}));\"",
-    "getAllTranslations": "node -e \"console.log(require('./getAllTranslations/index').handler({}));\"",
-    "lastLambda": "node -e \"console.log(require('./lastLambda/index').handler({}));\""
+		"getAllTranslations": "node -e \"console.log(require('./getAllTranslations/index').handler({}));\"",
+		"lastLambda": "node -e \"console.log(require('./lastLambda/code/index').handler({}));\""
 	},
-  "execute_command": {
-    "command": "npm run helloworld"
-  },
+	"execute_command": {
+		"command": "npm run helloworld"
+	},
 	"devDependencies": {
 		"eslint": "^4.19.0"
+	},
+	"dependencies": {
+		"mysql": "^2.17.1"
 	}
 }
