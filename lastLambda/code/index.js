@@ -1,38 +1,20 @@
-var mysql = require('mysql');
-var config = require('./dbconfig.json');
-var baseResponse = require('./baseResponse.js');
-
-var pool = mysql.createPool({
-  connectionLimit: 10,
-  host: config.dbhost,
-  user: config.dbuser,
-  password: config.dbpassword,
-  database: config.dbname
-});
+var base = require('./base.js');
+var db = require('./db.js');
 
 exports.handler = async (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
   let result = {};
+  let table = event.t;
+  let id = event.id;
   try {
-    let sql = "SELECT * FROM " + event.table;
-    result = await getUsers(sql, 0);
-    baseResponse.setResponse(result, null, callback)
+    let sql = "SELECT * FROM " + table + " WHERE Id = ?";
+    result = await getUsers(sql, id);
+    base.returnOK(result, callback);
   } catch (err) {
-    baseResponse.setResponse(null, err, callback)
+    base.returnError(err, callback);
   }
 };
 
-
 let getUsers = async (sql, params) => {
-  return new Promise((resolve, reject) => {
-    pool.getConnection((err, connection) => {
-      connection.query(sql, params, (err, results) => {
-        if (err) {
-          reject(err);
-        }
-        connection.release();
-        resolve(results);
-      });
-    });
-  });
+  return db.execSql(sql, params);
 };
