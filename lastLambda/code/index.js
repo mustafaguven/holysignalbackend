@@ -1,5 +1,7 @@
 var mysql = require('mysql');
 var config = require('./dbconfig.json');
+var baseResponse = require('./baseResponse.js');
+
 var pool = mysql.createPool({
   connectionLimit: 10,
   host: config.dbhost,
@@ -12,22 +14,14 @@ exports.handler = async (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
   let result = {};
   try {
-    let table = event.table
-    let sql = "SELECT * FROM " + table;
+    let sql = "SELECT * FROM " + event.table;
     result = await getUsers(sql, 0);
-    response(result, null, callback)
+    baseResponse.setResponse(result, null, callback)
   } catch (err) {
-    response(null, err, callback)
+    baseResponse.setResponse(null, err, callback)
   }
 };
 
-function response(result, err, callback) {
-  return callback(null, {
-    message: JSON.stringify(err),
-    data: JSON.stringify(result),
-    status: err === null ? 1 : 0
-  });
-}
 
 let getUsers = async (sql, params) => {
   return new Promise((resolve, reject) => {
