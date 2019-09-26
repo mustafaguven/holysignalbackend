@@ -3,7 +3,9 @@
 	"scripts": {
 		"helloworld": "node -e \"console.log(require('./helloworld/index').handler({}));\"",
 		"getAllTranslations": "node -e \"console.log(require('./getAllTranslations/index').handler({}));\"",
-		"lastLambda": "node -e \"console.log(require('./lastLambda/code/index').handler({}));\""
+		"lastLambda": "node -e \"console.log(require('./lastLambda/code/index').handler({}));\"",
+		"syncEditions": "node -e \"console.log(require('./syncEditions/code/index').handler({}));\"",
+		"syncSurahs": "node -e \"console.log(require('./syncSurahs/code/index').handler({}));\""
 	},
 	"execute_command": {
 		"command": "npm run helloworld"
@@ -12,6 +14,8 @@
 		"eslint": "^4.19.0"
 	},
 	"dependencies": {
-		"mysql": "^2.17.1"
+		"mysql": "^2.17.1",
+		"request": "^2.88.0",
+		"request-promise-native": "^1.0.7"
 	}
 }

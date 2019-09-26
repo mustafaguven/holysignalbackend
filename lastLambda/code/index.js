@@ -3,6 +3,7 @@ var db = require('./db.js');
 
 exports.handler = async (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
+
   let result = {};
   let table = event.t;
   let id = event.id;
