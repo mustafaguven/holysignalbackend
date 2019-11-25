@@ -5,7 +5,9 @@
 		"getAllTranslations": "node -e \"console.log(require('./getAllTranslations/index').handler({}));\"",
 		"lastLambda": "node -e \"console.log(require('./lastLambda/code/index').handler({}));\"",
 		"syncEditions": "node -e \"console.log(require('./syncEditions/code/index').handler({}));\"",
-		"syncSurahs": "node -e \"console.log(require('./syncSurahs/code/index').handler({}));\""
+		"syncSurahs": "node -e \"console.log(require('./syncSurahs/code/index').handler({}));\"",
+		"getSurahByEditionId": "node -e \"console.log(require('./getSurahByEditionId/code/index').handler({}));\"",
+		"getSurahTranslationByLanguage": "node -e \"console.log(require('./getSurahTranslationByLanguage/code/index').handler({}));\""
 	},
 	"execute_command": {
 		"command": "npm run helloworld"
