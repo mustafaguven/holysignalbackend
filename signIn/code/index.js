@@ -25,7 +25,7 @@ exports.handler = async (event, context, callback) => {
       return
     }
 
-    if(newSessionChangeCount == 1){
+    if(newSessionChangeCount == 2){
       base.returnError("You are changing your stored phone, this can be only 1 time in a year for security reasons. Do you want to change your stored phone", callback, 102);
       return
     } else if (newSessionChangeCount > 2) {
@@ -38,6 +38,7 @@ exports.handler = async (event, context, callback) => {
       return
     }
 
+    await updateLastLoginDate([base.getCreateDate(new Date()), email, password]);
     result = {
         "name": result.name,
         "surname": result.surname,
@@ -48,6 +49,10 @@ exports.handler = async (event, context, callback) => {
     base.returnError(err.message, callback);
     console.log(err)
   }
+};
+
+let updateLastLoginDate = async (lastLoginDate, email, password) => {
+  return db.execSqlWithParams("UPDATE holysignaldb.Member SET lastLoginDate = ? WHERE email = ? and password = ?", lastLoginDate, email, password);
 };
 
 let getMember = async (email, password) => {

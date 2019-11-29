@@ -21,7 +21,7 @@ exports.handler = async (event, context, callback) => {
        return
     }
 
-    await insertUser([name, surname, email, password, sessionNo, phoneBrand, phoneModel]);
+    await insertUser([name, surname, email, password, sessionNo, phoneBrand, phoneModel, base.getCreateDate(new Date())]);
 
     result = {
         "name": name,
@@ -39,6 +39,6 @@ let checkEmailAvailable = async (email) => {
   return db.execSqlWithParams("SELECT * FROM holysignaldb.Member WHERE email = ?", email);
 };
 
-let insertUser = async (name, surname, email, password, sessionNo, phoneBrand, phoneModel) => {
-  return db.execSqlWithParams("INSERT INTO holysignaldb.Member (name, surname, email, password, sessionNo, phoneBrand, phoneModel, sessionChangeCount) VALUES (?, ?, ?, ?, ?, ?, ?, 0)", name, surname, email, password, sessionNo, phoneBrand, phoneModel);
+let insertUser = async (name, surname, email, password, sessionNo, phoneBrand, phoneModel, createDate) => {
+  return db.execSqlWithParams("INSERT INTO holysignaldb.Member (name, surname, email, password, sessionNo, phoneBrand, phoneModel, sessionChangeCount, createDate) VALUES (?, ?, ?, ?, ?, ?, ?, 0, ?)", name, surname, email, password, sessionNo, phoneBrand, phoneModel, createDate);
 };

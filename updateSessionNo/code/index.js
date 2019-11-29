@@ -32,7 +32,7 @@ exports.handler = async (event, context, callback) => {
       return
     }
 
-    await updateSessionNo([sessionNo, newSessionChangeCount, phoneBrand, phoneModel, email, password]);
+    await updateSessionNo([sessionNo, newSessionChangeCount, phoneBrand, phoneModel, base.getCreateDate(new Date()), email, password]);
     result = await getMember([email, password]);
     result = result[0];
     result = {
@@ -47,8 +47,8 @@ exports.handler = async (event, context, callback) => {
   }
 };
 
-let updateSessionNo = async (sessionNo, newSessionChangeCount, phoneBrand, phoneModel, email, password) => {
-  return db.execSqlWithParams("UPDATE holysignaldb.Member SET sessionNo = ?, sessionChangeCount = ?, phoneBrand = ?, phoneModel = ? WHERE email = ? and password = ?", sessionNo, newSessionChangeCount, phoneBrand, phoneModel, email, password);
+let updateSessionNo = async (sessionNo, newSessionChangeCount, phoneBrand, phoneModel, lastSessionChangeDate, email, password) => {
+  return db.execSqlWithParams("UPDATE holysignaldb.Member SET sessionNo = ?, sessionChangeCount = ?, phoneBrand = ?, phoneModel = ?, lastSessionChangeDate = ? WHERE email = ? and password = ?", sessionNo, newSessionChangeCount, phoneBrand, phoneModel, lastSessionChangeDate, email, password);
 };
 
 let getMember = async (email, password) => {
