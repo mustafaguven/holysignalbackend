@@ -26,10 +26,10 @@ exports.handler = async (event, context, callback) => {
     }
 
     if(newSessionChangeCount == 2){
-      base.returnError("You are changing your stored phone, this can be only 1 time in a year for security reasons. Do you want to change your stored phone", callback, 102);
+      base.returnError("You are changing your stored phone, this can be only 2 times in a year for security reasons. Do you want to change your stored phone", callback, 102);
       return
     } else if (newSessionChangeCount > 2) {
-      base.returnError("You have changed your stored phone than 2 times in a year, this is invalid for security reasons. Please contact us via communication screen", callback, 103);
+      base.returnError("You have changed your stored phone more than 2 times in a year, this is invalid for security reasons. Please contact us via communication screen", callback, 103);
       return
     }
 
