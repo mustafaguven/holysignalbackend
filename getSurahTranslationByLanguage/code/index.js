@@ -9,7 +9,7 @@ exports.handler = async (event, context, callback) => {
     //let editionId = 60
     let surahTranslationData = await getSurahTranslationByLanguage(editionId);
     let languageId = surahTranslationData[0].languageId
-    surahTranslationData = surahTranslationData.map(u => ({Id: u.Id, surahNumber: u.surahNumber, name: u.name}));
+    surahTranslationData = surahTranslationData.map(u => ({Id: u.Id, surahNumber: u.surahNumber, name: u.name, meaning: u.meaning, specification: u.specification}));
 
     let result = {
       'languageId' : languageId,

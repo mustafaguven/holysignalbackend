@@ -7,7 +7,10 @@
 		"syncEditions": "node -e \"console.log(require('./syncEditions/code/index').handler({}));\"",
 		"syncSurahs": "node -e \"console.log(require('./syncSurahs/code/index').handler({}));\"",
 		"getSurahByEditionId": "node -e \"console.log(require('./getSurahByEditionId/code/index').handler({}));\"",
-		"getSurahTranslationByLanguage": "node -e \"console.log(require('./getSurahTranslationByLanguage/code/index').handler({}));\""
+		"getSurahTranslationByLanguage": "node -e \"console.log(require('./getSurahTranslationByLanguage/code/index').handler({}));\"",
+		"getMember": "node -e \"console.log(require('./getMember/code/index').handler({}));\"",
+		"signIn": "node -e \"console.log(require('./signIn/code/index').handler({}));\""
+
 	},
 	"execute_command": {
 		"command": "npm run helloworld"
